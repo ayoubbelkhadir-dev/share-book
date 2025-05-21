@@ -1,0 +1,48 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/share_book
+    username: ayoub
+    password: ayoub
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  mail:
+    host: localhost
+    port: 1025
+    username: ayoub
+    password: ayoub
+    properties:
+      mail:
+        smtp:
+          trust: "*"
+        auth: true
+        starttls:
+          enabled: true
+        connectiontimeout: 5000
+        timeout: 3000
+        writetimeout: 5000
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: "http://localhost:9090/realms/share_book"
+application:
+  security:
+    jwt:
+      expiration: 864000
+      secret-key: 4c073382a380f3901867458e588542022a9799c77f51989a74d0996eb036080c
+  mailing:
+    frontend:
+      activation-url: http://localhost:4200/activate-account
+  file:
+    uploads:
+      photos-output-path: ./uploads
+server:
+  port: 8080
